@@ -10,42 +10,33 @@
 
 //Follow-up: what if you can't use division?
 
+import problem1.Problem1;
+import problem2.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> resultArray = problem1(Arrays.asList(1, 2, 3, 4, 5));
-//        List<Integer> resultArray = problem1(Arrays.asList(3, 2, 1));
-//        List<Integer> resultArray = problem1(Arrays.asList(1, 2, 0, 5));
+        // problem1
+//        List<Integer> resultArray = Problem1.resolve1(Arrays.asList(1, 2, 3, 4, 5));
+//        List<Integer> resultArray = Problem1.resolve1(Arrays.asList(3, 2, 1));
+//        List<Integer> resultArray = Problem1.resolve1(Arrays.asList(1, 2, 0, 5));
 //        for (Integer integer : resultArray) {
 //            System.out.println(integer);
 //        }
-    }
 
-    private static List<Integer> problem1(List<Integer> intArray) {
-        int multiplyAll = 1;
-        boolean hasZero = Boolean.FALSE;
-        for (Integer integer : intArray) {
-            if (integer != 0) {
-                multiplyAll *= integer;
-            } else {
-                hasZero = Boolean.TRUE;
-            }
-        }
-        List<Integer> resultArray = new ArrayList<>();
-        for (Integer integer : intArray) {
-            if (hasZero) {
-                if (integer == 0) {
-                    resultArray.add(multiplyAll);
-                } else {
-                    resultArray.add(0);
-                }
-            } else {
-                resultArray.add(multiplyAll / integer);
-            }
-        }
-        return resultArray;
+        // problem2
+        problem2.Codec codec = new problem2.Codec();
+        TreeNode root = new TreeNode(1);
+        TreeNode rootRight = new TreeNode(3);
+        root.setLeft(new TreeNode(2));
+        root.setRight(rootRight);
+        rootRight.setLeft(new TreeNode(4));
+        rootRight.setRight(new TreeNode(5));
+        String serialized = codec.serialize(root);
+        TreeNode result = codec.deserialize(serialized);
+
     }
 }
